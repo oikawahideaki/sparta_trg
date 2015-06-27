@@ -1,5 +1,21 @@
 <%= form_for(@user) do |f| %>
 
+
+  <%= form_for(@user) do | f|  %>
+  <% if @customer.errors.any? %>
+    <div class="alert alert-danger">
+      <p><b><%= @user.errors.count %>件のエラーがあります</b></p>
+
+      <ul>
+      <% @user.errors.full_messages.each do | message | %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
   <div class="form-group">
     <%= f.label :user_name, "ユーザー名"%><br>
     <%= f.text_field :user_name, class: "form-control" %>
